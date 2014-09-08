@@ -19,12 +19,14 @@ public class ProcessCheck extends TimerTask {
     JTable Table;
     List<ExecCmd> lista;
     DefaultTableModel model;
+    Integer num;
     
-    public ProcessCheck(ExecCmd cmd, JTable Table, List<ExecCmd> lista, DefaultTableModel model){
+    public ProcessCheck(ExecCmd cmd, JTable Table, List<ExecCmd> lista, DefaultTableModel model, Integer num){
         this.cmd = cmd;
         this.Table = Table;
         this.lista = lista;
         this.model = model;
+        this.num = num;
     }
     
     public void RemoveTable(){
@@ -36,11 +38,12 @@ public class ProcessCheck extends TimerTask {
     public void run() {
         if(cmd.terminado()){            
             System.out.println(cmd.toString() + "TERMINADO!");
-             lista.get(0).cancela();
+             //lista.get(0).cancela();
+            cmd.cancela();
              lista.remove(cmd);  
-             model.removeRow(0);
-             Table.setModel(Table.getModel());             
-             cmd.cancela();
+             model.removeRow(num);
+             //Table.setModel(Table.getModel());             
+             
             
         }else
             System.out.println(cmd.toString() + "nao terminou");
