@@ -1,6 +1,8 @@
 
 import java.util.List;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,15 +38,14 @@ public class ProcessCheck extends TimerTask {
 
     @Override
     public void run() {
+
         if(cmd.terminado()){            
-            System.out.println(cmd.toString() + "TERMINADO!");
-             //lista.get(0).cancela();
-            cmd.cancela();
-             lista.remove(cmd);  
-             model.removeRow(num);
-             //Table.setModel(Table.getModel());             
-             
-            
+            System.out.println(cmd.toString() + "TERMINADO!");                 
+            Table.setModel(Table.getModel());
+            model.removeRow(lista.indexOf(cmd));  
+            lista.remove(cmd);
+            this.cancel();
+            cmd.timer.cancel();
         }else
             System.out.println(cmd.toString() + "nao terminou");
     }
