@@ -34,13 +34,12 @@ public class ProcessCheck extends TimerTask {
 
     @Override
     public void run() {
-        if(cmd.terminado()){
-            RemoveTable();
+        if(cmd.terminado()){            
             System.out.println(cmd.toString() + "TERMINADO!");
-             lista.get(Table.getSelectedRow()).cancela();
-             lista.remove(Table.getSelectedRow());        
-             Table.setModel(Table.getModel());
-             model.removeRow(Table.getSelectedRow());
+             lista.get(cmd.hashCode()).cancela();
+             lista.remove(cmd.hashCode());  
+             model.removeRow(cmd.hashCode());
+             Table.setModel(Table.getModel());             
              cmd.cancela();
             
         }else
