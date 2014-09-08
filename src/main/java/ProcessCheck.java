@@ -36,9 +36,9 @@ public class ProcessCheck extends TimerTask {
     public void run() {
         if(cmd.terminado()){            
             System.out.println(cmd.toString() + "TERMINADO!");
-             lista.get(cmd.hashCode()).cancela();
-             lista.remove(cmd.hashCode());  
-             model.removeRow(cmd.hashCode());
+             lista.get(0).cancela();
+             lista.remove(cmd);  
+             model.removeRow(0);
              Table.setModel(Table.getModel());             
              cmd.cancela();
             
