@@ -46,8 +46,8 @@ public class ProcessCheck extends TimerTask {
             lista.remove(cmd);
             this.cancel();
             cmd.timer.cancel();
-        }else
-            System.out.println(cmd.toString() + "nao terminou");
+        }/*else
+            System.out.println(cmd.toString() + "nao terminou");*/
     }
     
 }
